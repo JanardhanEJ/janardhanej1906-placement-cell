@@ -1,54 +1,68 @@
-// Import mongoose library
+// Importing mongoose library to define schemas and interact with MongoDB
 import mongoose from "mongoose";
 
+// Define the schema for the 'Student' collection
 const studentSchema = new mongoose.Schema(
   {
+    // Student's full name (required field)
     name: {
       type: String,
-      required: true, // Name of the student is required
+      required: true,
     },
+    // Student's email address (must be unique and required)
     email: {
       type: String,
-      unique: true, // Email must be unique across all students
-      required: true, // Email is required
+      unique: true, // Ensures email is unique across all students
+      required: true,
     },
+    // Name of the student's college (required field)
     college: {
       type: String,
-      required: true, // College name is required
+      required: true,
     },
+    // Placement status with predefined options (required field)
     placement: {
       type: String,
       required: true,
-      enum: ["Placed", "Not Placed"], // Placement status must be one of these values
+      enum: ["Placed", "Not Placed"], // Limits the value to specific options
     },
+    // Student's contact number (required field)
     contactNumber: {
       type: Number,
-      required: true, // Contact number is required
+      required: true,
     },
+    // Batch or group identifier (required field)
     batch: {
       type: String,
-      required: true, // Batch name or identifier is required
+      required: true,
     },
+    // DSA (Data Structures and Algorithms) final score (required field)
     dsa: {
       type: Number,
-      required: true, // DSA (Data Structures and Algorithms) score is required
+      required: true,
     },
+    // Web development final score (required field)
     webd: {
       type: Number,
-      required: true, // Web development score is required
+      required: true,
     },
+    // React final score (required field)
     react: {
       type: Number,
-      required: true, // React score is required
+      required: true,
     },
+    // Array to store details of student's interview history
     interviews: [
       {
+        // Name of the company where the student was interviewed
         company: {
-          type: String, // Name of the company where the student interviewed
+          type: String,
         },
+        // Date of the interview (stored as a string for formatting flexibility)
         date: {
-          type: String, // Date of the interview (stored as a string)
+          type: String,
         },
+        // Interview result with predefined options
         result: {
           type: String,
           enum: [
@@ -57,14 +71,14 @@ const studentSchema = new mongoose.Schema(
             "Pending",
             "Not Selected",
             "Did not Attempt",
-          ], // Possible interview results
+          ], // Restricts the value to specific options
         },
       },
     ],
   },
-  { timestamps: true } // Automatically manage createdAt and updatedAt fields
+  { timestamps: true } // Automatically add `createdAt` and `updatedAt` fields
 );
 
-const Student = mongoose.model("Student", studentSchema); // Create 'Student' model based on studentSchema
+const Student = mongoose.model("Student", studentSchema); // Create the 'Student' model based on the defined schema
 
-export default Student; // Export Student model
+export default Student; // Export the 'Student' model to use it in other parts of the application

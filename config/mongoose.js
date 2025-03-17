@@ -1,37 +1,37 @@
 // Import necessary modules
-import mongoose from "mongoose"; // Import mongoose for MongoDB interactions
-import dotenv from "dotenv"; // Import dotenv to load environment variables
-import path from "path"; // Import path for resolving file paths
+import mongoose from "mongoose"; // Importing mongoose module for interacting with MongoDB
+import dotenv from "dotenv"; // Importing dotenv module to load environment variables securely
+import path from "path"; // Importing path module to work with file and directory paths
 
-// Load environment variables from .env file located in 'config' directory
+// Load environment variables from the .env file located in the 'config' directory
 dotenv.config({ path: path.resolve("config/.env") });
 
-// Handle Mongoose deprecation warning for `strictQuery`
+// Disable the `strictQuery` option to avoid deprecation warnings when using mongoose query filters
 mongoose.set("strictQuery", false);
 
-// Connect to the MongoDB database using the environment variable or local database as a fallback
-const mongoURI =
-  process.env.MONGODB_URI || "mongodb://localhost:27017/placement_cell";
+// Define the MongoDB connection URI using the environment variable
+const mongoURI = process.env.MONGODB_URI;
 
-// Log the MongoDB URI to the console for debugging and information
+// Log the MongoDB connection URI to help with debugging
 console.log("MongoDB URI:", mongoURI);
 
-// Throw an error if the MongoDB URI is not defined
+// If the MongoDB URI is not defined, throw an error to avoid connection issues
 if (!mongoURI) {
-  throw new Error("The MongoDB URI is not defined.");
+  throw new Error("MongoDB URI is not provided. Check your environment configuration..");
 }
 
-// Connect to MongoDB using mongoose
+// Establish a connection to MongoDB using mongoose with options to handle deprecation warnings
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection; // Get the default mongoose connection
 
-// Event listener for MongoDB connection error
-db.on("error", console.error.bind(console, "Error in connecting to MongoDB"));
+// Handle MongoDB connection errors and log them to the console
+db.on("error", console.error.bind(console, "Failed to connect to MongoDB"));
 
-// Event listener for successful MongoDB connection
+// Log a success message once the database connection is established
 db.once("open", function () {
-  console.log("Connected to Database :: MongoDB");
+  console.log("Successfully connected to MongoDB DataBase");
 });
 
-export default mongoose; // Export mongoose instance to be used throughout the application
+// Export the mongoose instance to enable its use in other parts of the application
+export default mongoose;

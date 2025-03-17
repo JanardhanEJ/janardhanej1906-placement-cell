@@ -1,14 +1,18 @@
-import Student from "../models/studentSchema.js"; // Import Student model/schema
+import Student from "../models/studentSchema.js"; // Importing Student model/schema
 
-// Define HomeController class to handle rendering home page and loading student details
+// Define HomeController class to handle home page rendering and student data loading
 export default class HomeController {
-  // Async method to render home page and load students details
+  // Method to render the home page and load student data
   async homePage(req, res) {
     try {
-      const students = await Student.find({}); // Fetch all students from the database
-      return res.render("home", { students }); // Render 'home' view with students data
+      const students = await Student.find({}); // Fetch all student records from the database
+      return res.render("home", { students }); // Render the 'home' view and pass the fetched student data to it
     } catch (error) {
-      return res.status(500).send("An error occurred while fetching students."); // Handle error if fetching students fails
+      // Log the error for debugging purposes
+      console.error(`Error occured while fetching student's data: ${error.message}`);
+
+      // Respond with a 500 status and an error message if fetching fails
+      return res.status(500).send("An error occurred while fetching student's data.");
     }
   }
 }

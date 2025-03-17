@@ -1,57 +1,59 @@
-import User from "../models/userSchema.js"; // Import User model/schema
-import Student from "../models/studentSchema.js"; // Import Student model/schema
-import fs from "fs"; // Import Node.js file system module
-import fastcsv from "fast-csv"; // Import fast-csv for CSV processing
+import User from "../models/userSchema.js"; // Importing User model/schema
+import Student from "../models/studentSchema.js"; // Importing Student model/schema
+import fs from "fs"; // Importing Node.js file system module
+import fastcsv from "fast-csv"; // Importing fast-csv for CSV processing
 
 export default class UserController {
-  // Render Signup page
+  // Render the Signup page
   signup(req, res) {
     if (req.isAuthenticated()) {
       return res.redirect("back"); // Redirect back if user is already authenticated
     }
-    res.render("signup"); // Render 'signup' view if user is not authenticated
+    res.render("signup"); // Render 'signup' view
   }
 
-  // Render Signin page
+  // Render the Signin page
   signin(req, res) {
     if (req.isAuthenticated()) {
       return res.redirect("back"); // Redirect back if user is already authenticated
     }
-    res.render("signin"); // Render 'signin' view if user is not authenticated
+    res.render("signin"); /// Render 'signin' view
   }
 
-  // create session
+  // Create a session for the user after successful login
   createSession(req, res) {
     console.log("Session created successfully");
-    return res.redirect("/"); // Redirect to home page after creating session
+    return res.redirect("/"); // Redirect to home page after successful login
   }
 
-  // signout
+  // Sign out the user and destroy the session
   signout(req, res) {
     req.logout(function (err) {
-      // Logout user
       if (err) {
+        console.error(`Error logging out - ${err.message}`);
         return next(err); // Handle error if logout fails
       }
     });
     return res.redirect("/users/signin"); // Redirect to signin page after logout
   }
 
-  // create user
+  // Create a new user
   async createUser(req, res) {
     const { name, email, password, confirmPassword } = req.body; // Extract user details from request body
     try {
+      // Check if passwords match
       if (password !== confirmPassword) {
         console.log(`Passwords don't match`);
         return res.redirect("back"); // Redirect back if passwords don't match
       }
-      const user = await User.findOne({ email }); // Check if user with the same email already exists
+      const user = await User.findOne({ email });  // Check if the user already exists
 
       if (user) {
-        console.log(`Email already exists`);
+        console.log(`User with email ${email} already exists`);
         return res.redirect("back"); // Redirect back if email already exists
       }
 
+      // Create a new user
       const newUser = await User.create({
         name,
         email,
@@ -61,27 +63,31 @@ export default class UserController {
       await newUser.save(); // Save new user to database
 
       if (!newUser) {
-        console.log(`Error in creating user`);
+        console.log(`Error in creating user: ${error}`);
         return res.redirect("back"); // Redirect back if user creation fails
       }
 
-      return res.redirect("/users/signin"); // Redirect to signin page after successful user creation
+      console.log(`User created successfully: ${newUser.name} (${newUser.email})`);
+
+      return res.redirect("/users/signin"); // Redirect to signin page after successful registration
     } catch (error) {
       console.log(`Error in creating user: ${error}`);
       res.redirect("back"); // Redirect back if there's an error
     }
   }
 
-  // download report in csv format
+  // Download student report in CSV format
   async downloadCsv(req, res) {
     try {
-      const students = await Student.find({}); // Fetch all students from database
+      const students = await Student.find({}); // Fetch all student records from the database
 
       let data = "";
       let no = 1;
+      // Prepare CSV header
       let csv =
         "S.No, Name, Email, College, Placemnt, Contact Number, Batch, DSA Score, WebDev Score, React Score, Interview, Date, Result";
 
+      // Build CSV data row by row
       for (let student of students) {
         data =
           no +
@@ -104,6 +110,7 @@ export default class UserController {
           "," +
           student.react;
 
+        // Add interview data if available
         if (student.interviews.length > 0) {
           for (let interview of student.interviews) {
             data +=
@@ -125,15 +132,15 @@ export default class UserController {
         csv,
         function (error, data) {
           if (error) {
-            console.log(error);
-            return res.redirect("back"); // Redirect back if there's an error writing file
+            console.log(`Error in Writing CSV Report: ${error}`);
+            return res.redirect("back"); // Redirect back if there's an error
           }
-          console.log("Report generated successfully");
-          return res.download("report/data.csv"); // Download CSV file
+          console.log("CSV Report generated successfully");
+          return res.download("report/data.csv"); // Trigger CSV file download
         }
       );
     } catch (error) {
-      console.log(`Error in downloading file: ${error}`);
+      console.log(`Error in Generating CSV Report: ${error}`);
       return res.redirect("back"); // Redirect back if there's an error
     }
   }

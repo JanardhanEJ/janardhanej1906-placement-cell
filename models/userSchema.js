@@ -1,35 +1,39 @@
-import mongoose from "mongoose"; // Import mongoose library
-import bcrypt from "bcrypt"; // Import bcrypt library for password hashing
+import mongoose from "mongoose"; // Importing mongoose library to define schemas and interact with MongoDB
+import bcrypt from "bcrypt"; // Importing bcrypt library for secure password hashing
 
+// Define the schema for the 'User' collection
 const userSchema = new mongoose.Schema(
   {
+    // User's full name (required field)
     name: {
       type: String,
-      required: true, // Name of the user is required
+      required: true,
     },
+    // User's email address (must be unique and required)
     email: {
       type: String,
-      unique: true, // Email must be unique across all users
-      required: true, // Email is required
+      unique: true, // Ensures that no two users have the same email
+      required: true,
     },
+    // Hashed version of the user's password (required field)
     passwordHash: {
       type: String,
-      required: true, // Hashed password is required
+      required: true,
     },
   },
-  { timestamps: true } // Automatically manage createdAt and updatedAt fields
+  { timestamps: true } // Automatically add `createdAt` and `updatedAt` fields
 );
 
-// Virtual property to set hashed password
+// Define a virtual field `password` to handle password hashing
 userSchema.virtual("password").set(function (value) {
-  this.passwordHash = bcrypt.hashSync(value, 12); // Hash the password using bcrypt with salt factor 12
+  this.passwordHash = bcrypt.hashSync(value, 12); // Hash the provided password using bcrypt with a salt factor of 12
 });
 
-// Method to compare hashed password
+// Method to check if the provided password matches the stored hash
 userSchema.methods.isPasswordCorrect = function (password) {
-  return bcrypt.compareSync(password, this.passwordHash); // Compare provided password with stored hashed password
+  return bcrypt.compareSync(password, this.passwordHash); // Compare the provided password with the stored hash
 };
 
-const User = mongoose.model("User", userSchema); // Create 'User' model based on userSchema
+const User = mongoose.model("User", userSchema); // Create the 'User' model based on the defined schema
 
-export default User; // Export User model
+export default User; // Export the 'User' model to use in other parts of the application
