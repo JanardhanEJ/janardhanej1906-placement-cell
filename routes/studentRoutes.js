@@ -1,38 +1,33 @@
-import express from "express"; // Importing Express framework
-import passport from "../config/passport-local-strategy.js"; // Importing Passport configuration
+import express from "express"; // Importing express for the web framework or to create the authentication router
+import passport from "../config/passport-local-strategy.js"; // Importing Passport configuration for authentication
 import StudentController from "../controllers/studentController.js"; // Importing StudentController to handle student operations
 
-const router = express.Router(); // Creating an instance of Express router
+const router = express.Router(); // Creating an instance of express Router for defining API routes
 
 const studentController = new StudentController(); // Creating an instance of StudentController to handle student-related routes
 
+// ===============
 // GET requests
+// ===============
 router.get(
-  "/create",
-  passport.checkAuthentication,
-  studentController.createStudentPage
+  "/create", // Endpoint for rendering create student page
+  passport.checkAuthentication, // Middleware to check user authentication
+  studentController.createStudentPage // Controller method to create a student
 );
-// Route: GET /create
-// Middleware: passport.checkAuthentication - Ensures user is authenticated
-// Handler: studentController.createStudentPage - Renders the page for creating a new student
 
 router.get(
-  "/delete/:id",
-  passport.checkAuthentication,
-  studentController.deleteStudent
+  "/delete/:id", // Endpoint for deleting a student by studentID
+  passport.checkAuthentication, // Middleware to check user authentication
+  studentController.deleteStudent // Controller method to delete a student
 );
-// Route: GET /delete/:id
-// Middleware: passport.checkAuthentication - Ensures user is authenticated
-// Handler: studentController.deleteStudent - Handles deleting a student identified by :id
 
+// ===============
 // POST requests
+// ===============
 router.post(
-  "/create-student",
-  passport.checkAuthentication,
-  studentController.createStudent
+  "/create-student", // Endpoint for creating a student
+  passport.checkAuthentication, // Middleware to check user authentication
+  studentController.createStudent // Controller method to handle student creation
 );
-// Route: POST /create-student
-// Middleware: passport.checkAuthentication - Ensures user is authenticated
-// Handler: studentController.createStudent - Handles creating a new student when form data is posted
 
-export default router; // Exporting the router instance for use in other parts of the application
+export default router; // Export the router to be used in other parts of the application

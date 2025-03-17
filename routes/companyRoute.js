@@ -1,46 +1,38 @@
-import express from "express";
-import passport from "passport";
-import CompanyController from "../controllers/companyController.js";
+import express from "express"; // Importing express for the web framework or to create the authentication router
+import passport from "passport"; // Importing passport for authentication
+import CompanyController from "../controllers/companyController.js"; // Importing the CompanyController to handle route callbacks
 
-const router = express.Router(); // Create an Express router instance
+const router = express.Router(); // Creating an instance of express Router for handling authentication routes
 const companyController = new CompanyController(); // Create an instance of CompanyController to handle route callbacks
 
+// ===============
 // GET requests
+// ===============
 router.get(
-  "/home",
-  passport.checkAuthentication,
-  companyController.companyPage
+  "/home", // Endpoint for rendering company page
+  passport.checkAuthentication, // Middleware to check user authentication
+  companyController.companyPage // Controller method to handle request
 );
-// Route: GET /home
-// Middleware: passport.checkAuthentication - Ensures user is authenticated
-// Handler: companyController.companyPage - Renders company page
 
 router.get(
-  "/allocate",
-  passport.checkAuthentication,
-  companyController.allocateInterview
+  "/allocate", // Endpoint for rendering interview allocation page
+  passport.checkAuthentication, // Middleware to check user authentication
+  companyController.allocateInterview // Controller method to handle request
 );
-// Route: GET /allocate
-// Middleware: passport.checkAuthentication - Ensures user is authenticated
-// Handler: companyController.allocateInterview - Renders allocation interview page
 
+// ===============
 // POST requests
+// ===============
 router.post(
-  "/schedule-interview",
-  passport.checkAuthentication,
-  companyController.scheduleInterview
+  "/schedule-interview", // Endpoint for scheduling an interview
+  passport.checkAuthentication, // Middleware to check user authentication
+  companyController.scheduleInterview // Controller method to handle request
 );
-// Route: POST /schedule-interview
-// Middleware: passport.checkAuthentication - Ensures user is authenticated
-// Handler: companyController.scheduleInterview - Handles scheduling interview logic
 
 router.post(
-  "/update-status/:id",
-  passport.checkAuthentication,
-  companyController.updateStatus
+  "/update-status/:id", // Endpoint for updating interview status
+  passport.checkAuthentication, // Middleware to check user authentication
+  companyController.updateStatus // Controller method to handle request
 );
-// Route: POST /update-status/:id
-// Middleware: passport.checkAuthentication - Ensures user is authenticated
-// Handler: companyController.updateStatus - Handles updating interview status logic
 
 export default router; // Export the router to be used in other parts of the application

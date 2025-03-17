@@ -46,7 +46,7 @@ export default class UserController {
         console.log(`Passwords don't match`);
         return res.redirect("back"); // Redirect back if passwords don't match
       }
-      const user = await User.findOne({ email });  // Check if the user already exists
+      const user = await User.findOne({ email }); // Check if the user already exists
 
       if (user) {
         console.log(`User with email ${email} already exists`);
