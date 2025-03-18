@@ -1,31 +1,36 @@
 <div class="container">
   <form
-    class="w-60 mx-auto mt-4" action="/company/schedule-interview" method="post" style="height: 60vh; display: grid; place-content: center; width: 530px;  border-radius: 5px; box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.05);">
-    <h3 style="margin-bottom: 50px; color: black;">Schedule Interview</h3>
+    class="w-50 mx-auto mt-4" action="/company/schedule-interview" method="post" style="height: 100%; display: grid; place-content: center; border-radius: 5px; box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.05); padding: 50px 70px;">
 
+    <!-- Form Heading -->
+    <h3 style="margin-bottom: 50px; color: black; text-align: center"><b><strong>Schedule Interview</strong></b></h3>
+
+    <!-- Name Field -->
     <div class="mb-3">
-      <label for="name" class="form-label" style="color: white">Name</label>
+      <label for="name" class="form-label" style="color: white"><b>Name</b></label>
       <select class="form-select" aria-label="Default select example" name="id" id="name">
-      <option selected disabled>Select Student</option>
+      <option selected disabled><b>Select Student</b></option>
 
       <%for(let student of students){%>
-      <option value="<%=student.id%>"><%= student.name %></option>
+      <option value="<%=student.id%>"><%= student.name %><b></b></option>
       <%}%>
       </select></select>
     </div>
 
+    <!-- Company Field -->
     <div class="mb-3">
-      <label for="company" class="form-label" style="color: white">Company</label>
+      <label for="company" class="form-label" style="color: white"><b>Company</b></label>
       <input type="text" class="form-control" id="company" name="company"/>
     </div>
 
+    <!-- Date Field -->
     <div class="mb-3">
-      <label for="date" class="form-label" style="color: white">Date</label>
+      <label for="date" class="form-label" style="color: white"><b>Date</b></label>
       <input type="date" class="form-control" id="date" name="date" />
     </div>
 
     <button class="btn btn-success align-self-center">
-      Schedule Interview
+      <b><strong>Schedule Interview</strong></b>
     </button>
   </form>
 </div>

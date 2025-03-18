@@ -12,11 +12,9 @@
   </div>
   <div class="col-12 col-md-6">
     <p class="mb-3 mt-2">
-      <strong
-        >Welcome to Team Career Camp, here you can view a list of students, add
-        new students, view a list of interviews, schedule interviews, update
-        results, download data, and more.</strong
-      >
+      <strong><h5>Welcome to TCC (Team Career Camp), an application where you can view a list of
+        students, add new students, view a list of interviews, schedule interviews,
+        update results, download data and more.</h5></strong>
     </p>
     <div
       class="mx-auto mt-5"
@@ -24,7 +22,7 @@
         display: grid;
         place-content: center;
         width: 600px;
-        background: rgb(230, 224, 224);
+        background: rgb(241, 224, 224);
         border-radius: 40px;
         box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.05);
         border: 5px solid #0a3535;
@@ -33,13 +31,13 @@
     >
       <div class="mx-auto mt-3 mb-4">
         <h3 class="text-success">
-          <strong><i class="bi bi-box-arrow-in-right"></i> Sign In</strong>
+          <strong><i class="bi bi-box-arrow-in-right"></i><b> Sign In</b></strong>
         </h3>
       </div>
       <form action="/users/create-session" method="post">
         <div class="mb-3">
           <label for="email" class="form-label"
-            ><i class="bi bi-envelope"></i> Email</label
+            ><i class="bi bi-envelope"></i><b><strong> Email</strong></b></label
           >
           <input
             type="email"
@@ -53,7 +51,7 @@
 
         <div class="mb-3">
           <label for="password" class="form-label"
-            ><i class="bi bi-upc-scan"></i> Password</label
+            ><i class="bi bi-upc-scan"></i><b><strong> Password</strong></b></label
           >
           <input
             type="password"
@@ -67,13 +65,13 @@
 
         <div class="mb-4 mt-3" style="display: flex; justify-content: center">
           <button type="submit" class="btn btn-success btn-block mb-4">
-            Sign In
+            <b><strong>Sign In</strong></b>
           </button>
         </div>
       </form>
       <div class="text-center">
         <p class="text-dark">
-          No Account? <a href="/users/signup">Register</a>
+          <b><strong>Don't have an Account?   <a href="/users/signup">Register</a></strong></b>
         </p>
       </div>
     </div>

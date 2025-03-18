@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-6">
-      <h2><strong>List of Students:</strong></h2>
+      <h1><b><strong>List of Students</strong></b></h1>
     </div>
 
     <div class="col-6 d-flex justify-content-end">
@@ -11,7 +11,7 @@
         href="/students/create"
         type="button"
         class="btn btn-success align-self-center"
-        >+ Add Student</a
+        ><strong><b>+ Add Student</b></strong></a
       >
     </div>
   </div>
@@ -21,36 +21,36 @@
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
         <tr>
-          <th scope="col"><strong>Batch</strong></th>
-          <th scope="col"><strong>Name</strong></th>
-          <th scope="col"><strong>Email</strong></th>
-          <th scope="col"><strong>Contact</strong></th>
-          <th scope="col"><strong>DSA</strong></th>
-          <th scope="col"><strong>WEB</strong></th>
-          <th scope="col"><strong>REACT</strong></th>
-          <th scope="col"><strong>Interview</strong></th>
-          <th scope="col" class="text-end"><strong>Action</strong></th>
+          <th scope="col" class="text-center"><b><strong>Batch</strong></b></th>
+          <th scope="col" class="text-center"><b><strong>Name</strong></b></th>
+          <th scope="col" class="text-center"><b><strong>Email</strong></b></th>
+          <th scope="col" class="text-center"><b><strong>Contact</strong></b></th>
+          <th scope="col" class="text-center"><b><strong>DSA</strong></b></th>
+          <th scope="col" class="text-center"><b><strong>WEB Dev</strong></b></th>
+          <th scope="col" class="text-center"><b><strong>REACT</strong></b></th>
+          <th scope="col" class="text-center"><b><strong>Interview</strong></b></th>
+          <th scope="col" class="text-center" class="text-end"><b><strong>Action</strong></b></th>
         </tr>
       </thead>
 
       <tbody id="myTable">
         <% for(let student of students) {%>
         <tr>
-          <th scope="row"><%=student.batch%></th>
-          <td><%=student.name%></td>
-          <td><%=student.email%></td>
-          <td><%=student.contactNumber%></td>
-          <td><%=student.dsa%></td>
-          <td><%=student.webd%></td>
-          <td><%=student.react%></td>
+          <th scope="row" class="text-center"><b><strong><%=student.batch%></strong></b></th>
+          <td class="text-center"><strong><b><%=student.name%></strong></b></td>
+          <td class="text-center"><strong><b><%=student.email%></strong></b></td>
+          <td class="text-center"><strong><b><%=student.contactNumber%></strong></b></td>
+          <td class="text-center"><strong><b><%=student.dsa%></strong></b></td>
+          <td class="text-center"><strong><b><%=student.webd%></strong></b></td>
+          <td class="text-center"><strong><b><%=student.react%></strong></b></td>
           <% if(student.interviews.length) {%>
-          <td>
+          <td class="text-center">
             <% for(let company of student.interviews){%>
-            <a href=" " id="compnay_name"> <%=company.company%> </a>
+            <a href=" " id="compnay_name"><strong><b><%=company.company%></strong></b></a>
             <%}%>
           </td>
           <%}else{%>
-          <td>NONE</td>
+          <td class="text-center"><strong><b>NONE</b></strong></td>
           <%}%>
           <td
             style="
@@ -73,7 +73,7 @@
   </div>
   <%}else{%>
   <div class="w-75 mx-auto mt-5">
-    <h2>No Records Found</h2>
+    <h2><strong><b>No Records found..</b></strong></h2>
   </div>
   <%}%>
 </div>
