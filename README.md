@@ -63,67 +63,67 @@ Follow these steps to run the project locally:
 ## Screenshots: (taken locally)
 1. Open your web browser and go to http://localhost:3000/user/signin
 You will see a login page like this:
-![alt text](../janardhanej1906-placement-cell/public/images/image-1.png)
+![alt text](public/images/image-1.png)
 
 ## 2. Sign Up/Register
 a) If you don’t have an account, click on the Register link.
 Fill in all the required details and click on the Register button.
-eg: ![alt text](../janardhanej1906-placement-cell/public/images/image-2.png)
+eg: ![alt text](public/images/image-2.png)
 
 b) Few common errors while Signing Up:
-![alt text](../janardhanej1906-placement-cell/public/images/image-3.png)
-![alt text](../janardhanej1906-placement-cell/public/images/image-4.png)
+![alt text](public/images/image-3.png)
+![alt text](public/images/image-4.png)
 
 c) Sample database entry:
-![alt text](../janardhanej1906-placement-cell/public/images/image-5.png)
+![alt text](public/images/image-5.png)
 
 ## 3. Sign/Log In
 Use the same email and password used during registration and click on the Sign In button.
-Example: ![alt text](../janardhanej1906-placement-cell/public/images/image-6.png)
+Example: ![alt text](public/images/image-6.png)
 
 a) If the entered details match, you will be redirected to the homepage:
-![alt text](../janardhanej1906-placement-cell/public/images/image-7.png)
+![alt text](public/images/image-7.png)
 
 ## 4. Sign/Log Out
 After a successful login, you can Log out by clicking on the Log Out button.
 After signing out, you will be redirected to login page like this:
-![alt text](../janardhanej1906-placement-cell/public/images/image-1.png)
+![alt text](public/images/image-1.png)
 
 ## 5. Add Student
 Click on the Add Student button from home page. Fill in all the required student details, then click on the Create Student button.
-![alt text](../janardhanej1906-placement-cell/public/images/image-8.png)
+![alt text](public/images/image-8.png)
 
 ## 6. List of Students
 After adding the student details, the Home page will display a list of all student details like this:
-![alt text](../janardhanej1906-placement-cell/public/images/image-9.png)
+![alt text](public/images/image-9.png)
 
 Sample database entry:
-![alt text](../janardhanej1906-placement-cell/public/images/image-15.png)
+![alt text](public/images/image-15.png)
 
 ## 7. Schedule Interview (Allocate Student to Interview)
 Click on the Allocate Interview button from the Company List page (navigation bar). Fill in all the required details, such as the company name, date, and allocate the student to the specific interview schedule.
-![alt text](../janardhanej1906-placement-cell/public/images/image-10.png)
+![alt text](public/images/image-10.png)
 
 After adding details, company's details are stored in Database
-![alt text](../janardhanej1906-placement-cell/public/images/image-14.png)
+![alt text](public/images/image-14.png)
 
 ## 8. List of Interviews
 After adding the interview details, the Company List page will display a list of all student's interview details like this:
-![alt text](../janardhanej1906-placement-cell/public/images/image-11.png)
+![alt text](public/images/image-11.png)
 
 ## 9. Mark Interview Result
 Employees can mark the interview result of a particular student with options like Selected, Not Selected, On Hold, and Pending (default option). After selecting the result, they need to click on Update to save it to the database.
-![alt text](../janardhanej1906-placement-cell/public/images/image-12.png)
+![alt text](public/images/image-12.png)
 
 ## 10. Download CSV
 Employees can export all student and interview data into a CSV file by clicking the Download Report link from the navigation bar. The CSV file will be generated and downloaded to your local system, allowing you to view, browse, and analyze the details.
-![alt text](../janardhanej1906-placement-cell/public/images/image-13.png)
+![alt text](public/images/image-13.png)
 
 ## 11. List of Students after allocating interview
-![alt text](../janardhanej1906-placement-cell/public/images/image-16.png)
+![alt text](public/images/image-16.png)
 
 ## 12. Delete Student Details
 You can delete student details by clicking the Delete button in the Action row on the Home page where all student details are listed.
 The image below shows the updated list after deleting the details of Naveen Student 
-![alt text](../janardhanej1906-placement-cell/public/images/image-17.png)
+![alt text](public/images/image-17.png)
 
