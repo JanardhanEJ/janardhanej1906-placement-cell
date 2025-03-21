@@ -20,7 +20,7 @@ Link: https://janardhanej1906-placement-cell.onrender.com/users/signin
 
 ## Environment Variables
 
-Before running the application locally, create a .env file at the root of your project and configure the following environment variables:
+Before running the application locally, create a .env file under the config directory of your project and configure the following environment variables:
 
 1. **PORT**: Port number the application will listen on.
 2. **DB_URL**: MongoDB database connection URL String.
