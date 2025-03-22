@@ -23,14 +23,14 @@ Link: https://janardhanej1906-placement-cell.onrender.com/users/signin
 Before running the application locally, create a .env file under the config directory of your project and configure the following environment variables:
 
 1. **PORT**: Port number the application will listen on.
-2. **DB_URL**: MongoDB database connection URL String.
+2. **MONGODB_URI**: MongoDB database connection URL String.
 
 Ensure all values are correctly set before starting the application.
 
 **Example `.env` file:**
 ```plaintext
 PORT=3000
-DB_URL=mongodb://localhost:27017/authdatabase 
+MONGODB_URI=mongodb://localhost:27017/authdatabase 
 ```
 
 
